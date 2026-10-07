@@ -6,6 +6,12 @@ CANVAS_HEIGHT = 1024
 
 open_canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
 
-delay(2)
+running = True
+
+while running:
+    for event in get_events():
+        if event.type == SDL_QUIT:
+            running = False
+    delay(0.05)
 
 close_canvas()
