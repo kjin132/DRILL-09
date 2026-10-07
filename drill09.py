@@ -15,10 +15,15 @@ def handle_events():
                 running = False
 
 
+def update():
+    global frame
+    frame = (frame + 1) % 8
+
+
 def draw():
     clear_canvas()
     ground.draw(CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2)
-    character.clip_draw(0, 3 * FRAME_SIZE, FRAME_SIZE, FRAME_SIZE, x, y)
+    character.clip_draw(frame * FRAME_SIZE, 3 * FRAME_SIZE, FRAME_SIZE, FRAME_SIZE, x, y)
     update_canvas()
 
 
@@ -28,9 +33,11 @@ character = load_image('animation_sheet.png')
 
 running = True
 x, y = CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2
+frame = 0
 
 while running:
     handle_events()
+    update()
     draw()
     delay(0.05)
 
