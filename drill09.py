@@ -46,7 +46,7 @@ def clamp(value, low, high):
 def update():
     global x, y, frame, face_right, action
     x = clamp(x + dir_x * SPEED, HALF, CANVAS_WIDTH - HALF)
-    y += dir_y * SPEED
+    y = clamp(y + dir_y * SPEED, HALF, CANVAS_HEIGHT - HALF)
 
     if dir_x > 0:
         face_right = True
