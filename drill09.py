@@ -51,7 +51,7 @@ def update():
     if dir_x != 0:
         action = RUN_RIGHT if face_right else RUN_LEFT
     else:
-        action = IDLE_RIGHT
+        action = IDLE_RIGHT if face_right else IDLE_LEFT
 
     frame = (frame + 1) % 8
 
