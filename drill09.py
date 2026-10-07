@@ -4,6 +4,7 @@ CANVAS_WIDTH = 1280
 CANVAS_HEIGHT = 1024
 FRAME_SIZE = 100
 HALF = FRAME_SIZE // 2
+MARGIN_Y = 100         # 화면 위아래 끝에서 안쪽으로 들어온 거리
 SPEED = 10
 
 RUN_LEFT = 0
@@ -53,7 +54,7 @@ def select_action():
 def update():
     global x, y, frame, face_right, action
     x = clamp(x + dir_x * SPEED, HALF, CANVAS_WIDTH - HALF)
-    y = clamp(y + dir_y * SPEED, HALF, CANVAS_HEIGHT - HALF)
+    y = clamp(y + dir_y * SPEED, HALF + MARGIN_Y, CANVAS_HEIGHT - HALF - MARGIN_Y)
 
     if dir_x > 0:
         face_right = True
