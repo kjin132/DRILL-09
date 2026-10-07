@@ -34,8 +34,9 @@ def handle_events():
 
 
 def update():
-    global x, frame
+    global x, y, frame
     x += dir_x * SPEED
+    y += dir_y * SPEED
 
     frame = (frame + 1) % 8
 
