@@ -39,9 +39,16 @@ def handle_events():
 
 
 def update():
-    global x, y, frame
+    global x, y, frame, action
     x += dir_x * SPEED
     y += dir_y * SPEED
+
+    if dir_x > 0:
+        action = RUN_RIGHT
+    elif dir_x < 0:
+        action = RUN_LEFT
+    else:
+        action = IDLE_RIGHT
 
     frame = (frame + 1) % 8
 
