@@ -39,14 +39,17 @@ def handle_events():
 
 
 def update():
-    global x, y, frame, action
+    global x, y, frame, face_right, action
     x += dir_x * SPEED
     y += dir_y * SPEED
 
     if dir_x > 0:
-        action = RUN_RIGHT
+        face_right = True
     elif dir_x < 0:
-        action = RUN_LEFT
+        face_right = False
+
+    if dir_x != 0:
+        action = RUN_RIGHT if face_right else RUN_LEFT
     else:
         action = IDLE_RIGHT
 
@@ -68,6 +71,7 @@ running = True
 x, y = CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2
 frame = 0
 dir_x, dir_y = 0, 0
+face_right = True
 action = IDLE_RIGHT
 
 while running:
