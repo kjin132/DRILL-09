@@ -48,7 +48,7 @@ def update():
     elif dir_x < 0:
         face_right = False
 
-    if dir_x != 0:
+    if dir_x != 0 or dir_y != 0:
         action = RUN_RIGHT if face_right else RUN_LEFT
     else:
         action = IDLE_RIGHT if face_right else IDLE_LEFT
