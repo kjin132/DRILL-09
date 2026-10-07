@@ -43,6 +43,13 @@ def clamp(value, low, high):
     return max(low, min(value, high))
 
 
+def select_action():
+    moving = dir_x != 0 or dir_y != 0
+    if moving:
+        return RUN_RIGHT if face_right else RUN_LEFT
+    return IDLE_RIGHT if face_right else IDLE_LEFT
+
+
 def update():
     global x, y, frame, face_right, action
     x = clamp(x + dir_x * SPEED, HALF, CANVAS_WIDTH - HALF)
@@ -53,10 +60,7 @@ def update():
     elif dir_x < 0:
         face_right = False
 
-    if dir_x != 0 or dir_y != 0:
-        action = RUN_RIGHT if face_right else RUN_LEFT
-    else:
-        action = IDLE_RIGHT if face_right else IDLE_LEFT
+    action = select_action()
 
     frame = (frame + 1) % 8
 
