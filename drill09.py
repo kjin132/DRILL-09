@@ -2,6 +2,7 @@ from pico2d import *
 
 CANVAS_WIDTH = 1280
 CANVAS_HEIGHT = 1024
+FRAME_SIZE = 100
 
 
 def handle_events():
@@ -17,13 +18,16 @@ def handle_events():
 def draw():
     clear_canvas()
     ground.draw(CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2)
+    character.clip_draw(0, 3 * FRAME_SIZE, FRAME_SIZE, FRAME_SIZE, x, y)
     update_canvas()
 
 
 open_canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
 ground = load_image('TUK_GROUND.png')
+character = load_image('animation_sheet.png')
 
 running = True
+x, y = CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2
 
 while running:
     handle_events()
