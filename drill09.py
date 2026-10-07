@@ -3,6 +3,7 @@ from pico2d import *
 CANVAS_WIDTH = 1280
 CANVAS_HEIGHT = 1024
 FRAME_SIZE = 100
+SPEED = 10
 
 
 def handle_events():
@@ -25,7 +26,9 @@ def handle_events():
 
 
 def update():
-    global frame
+    global x, frame
+    x += dir_x * SPEED
+
     frame = (frame + 1) % 8
 
 
