@@ -7,7 +7,7 @@ SPEED = 10
 
 
 def handle_events():
-    global running, dir_x
+    global running, dir_x, dir_y
     for event in get_events():
         if event.type == SDL_QUIT:
             running = False
@@ -18,11 +18,15 @@ def handle_events():
                 dir_x += 1
             elif event.key == SDLK_LEFT:
                 dir_x -= 1
+            elif event.key == SDLK_UP:
+                dir_y += 1
         elif event.type == SDL_KEYUP:
             if event.key == SDLK_RIGHT:
                 dir_x -= 1
             elif event.key == SDLK_LEFT:
                 dir_x += 1
+            elif event.key == SDLK_UP:
+                dir_y -= 1
 
 
 def update():
@@ -46,7 +50,7 @@ character = load_image('animation_sheet.png')
 running = True
 x, y = CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2
 frame = 0
-dir_x = 0
+dir_x, dir_y = 0, 0
 
 while running:
     handle_events()
