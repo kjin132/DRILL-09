@@ -5,6 +5,11 @@ CANVAS_HEIGHT = 1024
 FRAME_SIZE = 100
 SPEED = 10
 
+RUN_LEFT = 0
+RUN_RIGHT = 1
+IDLE_LEFT = 2
+IDLE_RIGHT = 3
+
 
 def handle_events():
     global running, dir_x, dir_y
@@ -44,7 +49,7 @@ def update():
 def draw():
     clear_canvas()
     ground.draw(CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2)
-    character.clip_draw(frame * FRAME_SIZE, 3 * FRAME_SIZE, FRAME_SIZE, FRAME_SIZE, x, y)
+    character.clip_draw(frame * FRAME_SIZE, action * FRAME_SIZE, FRAME_SIZE, FRAME_SIZE, x, y)
     update_canvas()
 
 
@@ -56,6 +61,7 @@ running = True
 x, y = CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2
 frame = 0
 dir_x, dir_y = 0, 0
+action = IDLE_RIGHT
 
 while running:
     handle_events()
