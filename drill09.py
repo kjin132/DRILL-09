@@ -3,6 +3,7 @@ from pico2d import *
 CANVAS_WIDTH = 1280
 CANVAS_HEIGHT = 1024
 FRAME_SIZE = 100
+HALF = FRAME_SIZE // 2
 SPEED = 10
 
 RUN_LEFT = 0
@@ -38,9 +39,13 @@ def handle_events():
                 dir_y += 1
 
 
+def clamp(value, low, high):
+    return max(low, min(value, high))
+
+
 def update():
     global x, y, frame, face_right, action
-    x += dir_x * SPEED
+    x = clamp(x + dir_x * SPEED, HALF, CANVAS_WIDTH - HALF)
     y += dir_y * SPEED
 
     if dir_x > 0:
